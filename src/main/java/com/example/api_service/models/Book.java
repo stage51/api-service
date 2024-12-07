@@ -2,12 +2,8 @@ package com.example.api_service.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +15,32 @@ public class Book {
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
+
+    public Book() {
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @JsonIgnore
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
