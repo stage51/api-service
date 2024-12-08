@@ -32,7 +32,9 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker container run api-service:latest api-service'
+                sh 'docker run -d -p 8888:8888 --name api-service api-service:latest'
+                sh 'docker exec api-service curl http://localhost:8888/users'
+                sh 'docker stop api-service'
             }
         }
     }
