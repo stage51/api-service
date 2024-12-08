@@ -1,25 +1,21 @@
 package com.example.api_service.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 
-@Entity
 public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String title;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    @JsonIgnore
-    private User user;
 
     public Book() {
     }
 
-    public Long getId() {
+    public Book(int id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
+    public int getId() {
         return this.id;
     }
 
@@ -27,20 +23,12 @@ public class Book {
         return this.title;
     }
 
-    public User getUser() {
-        return this.user;
-    }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    @JsonIgnore
-    public void setUser(User user) {
-        this.user = user;
     }
 }

@@ -1,24 +1,25 @@
 package com.example.api_service.models;
 
-import jakarta.persistence.*;
-
 import java.util.List;
 
-@Entity
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+    private int id;
 
     private String name;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Book> books;
 
     public User() {
     }
 
-    public Long getId() {
+    public User(int id, String name, List<Book> books) {
+        this.id = id;
+        this.name = name;
+        this.books = books;
+    }
+
+    public int getId() {
         return this.id;
     }
 
@@ -30,7 +31,7 @@ public class User {
         return this.books;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

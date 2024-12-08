@@ -24,13 +24,14 @@ public class DataInitializer implements CommandLineRunner {
 
         for (int i = 1; i <= 10; i++) {
             User user = new User();
+            user.setId(i);
             user.setName("User " + i);
 
             List<Book> books = new ArrayList<>();
             for (int j = 1; j <= 3; j++) {
                 Book book = new Book();
+                book.setId(j);
                 book.setTitle("Book " + j + " of User " + i);
-                book.setUser(user);
                 books.add(book);
             }
 
