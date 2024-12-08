@@ -32,6 +32,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
+                sh 'docker remove api-service'
                 sh 'docker run -d -p 8888:8888 --name api-service api-service:latest'
             }
         }
